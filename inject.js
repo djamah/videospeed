@@ -127,6 +127,7 @@ chrome.runtime.sendMessage({}, function(response) {
             <button data-action="slower">-</button>
             <button data-action="faster">+</button>
             <button data-action="advance" class="rw">»</button>
+            <button data-action="fav" class="star">⭐</button>
             <button data-action="display" class="hideButton">x</button>
           </span>
         </div>
@@ -193,11 +194,11 @@ chrome.runtime.sendMessage({}, function(response) {
       initializeNow(window.document)
     };
     if (document) {
-      if (document.readyState === "complete") {
+      if (document.readyState === "complete" || document.readyState === "interactive") {
         initializeNow(document);
       } else {
         document.onreadystatechange = () => {
-          if (document.readyState === "complete") {
+          if (document.readyState === "complete" || document.readyState === "interactive") {
             initializeNow(document);
           }
         }
@@ -366,6 +367,8 @@ chrome.runtime.sendMessage({}, function(response) {
           handleDrag(v, controller, e);
         } else if (action === 'fast') {
           resetSpeed(v, tc.settings.fastSpeed);
+        } else if (action === 'fav') {
+
         }
       }
     });

@@ -1,6 +1,6 @@
 {
-  "name": "Video Speed Controller",
-  "short_name": "videospeed",
+  "name": "Djamah TV, Speed Controller",
+  "short_name": "djamah-tv",
   "version": "0.5.1",
   "manifest_version": 2,
   "description": "Speed up, slow down, advance and rewind any HTML5 video with quick shortcuts.",
