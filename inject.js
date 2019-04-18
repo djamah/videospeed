@@ -1,4 +1,3 @@
-chrome.runtime.sendMessage({}, function(response) {
   var tc = {
     settings: {
       speed: 1.0,           // default 1x
@@ -208,7 +207,6 @@ chrome.runtime.sendMessage({}, function(response) {
       var fragment = document.createDocumentFragment();
       fragment.appendChild(wrapper);
 
-      this.video.classList.add('vsc-initialized');
       this.video.dataset['vscid'] = this.id;
 
       switch (true) {
@@ -344,13 +342,12 @@ chrome.runtime.sendMessage({}, function(response) {
           if (added) {
             new tc.videoController(node, parent);
           } else {
-            if (node.classList.contains('vsc-initialized')) {
-              let id = node.dataset['vscid'];
+            let id = node.dataset['vscid'];
+            if (id) {
               let ctrl = document.querySelector(`div[data-vscid="${id}"]`)
               if (ctrl) {
                 ctrl.remove();
               }
-              node.classList.remove('vsc-initialized');
               delete node.dataset['vscid'];
             }
           }
@@ -540,4 +537,3 @@ chrome.runtime.sendMessage({}, function(response) {
       animation = false;
     }, 2000);
   }
-});
